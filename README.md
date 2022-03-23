@@ -1,3 +1,15 @@
+# LucasP.dev v1
+
+Thanks for checking out my personal website!
+<br>
+<br>
+<br>
+<br>
+
+<sub>create-react-app README below</sub>
+
+---
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
