@@ -1,5 +1,7 @@
+import { Navbar } from '../'
+
 function App() {
-  return <div className='App'>Hello World</div>
+  return <Navbar title='Hello World' />
 }
 
 export default App
