@@ -1,7 +1,7 @@
 import { Navbar } from '../'
 
 function App() {
-  return <Navbar title='Hello World' />
+  return <Navbar />
 }
 
 export default App
