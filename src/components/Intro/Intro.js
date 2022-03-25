@@ -55,6 +55,7 @@ const styles = {
       xs: 'h3.fontSize',
       sm: 'h1.fontSize',
     },
+    fontWeight: 'fontWeightBold',
   },
   marginBottom: {
     mb: {
@@ -94,7 +95,10 @@ function Intro() {
               <ListItemIcon>
                 <SvgIcon component={JavaScriptIcon} viewBox='0 0 448 512' />
               </ListItemIcon>
-              <ListItemText primary='JavaScript' primaryTypographyProps={{ sx: styles.subtitle }} />
+              <ListItemText
+                primary='JavaScript (ES6+)'
+                primaryTypographyProps={{ sx: styles.subtitle }}
+              />
             </ListItem>
             <ListItem disableGutters>
               <ListItemIcon>
