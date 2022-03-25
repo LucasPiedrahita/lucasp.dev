@@ -10,7 +10,9 @@ const styles = {
 function App() {
   return (
     <Box sx={styles.root}>
-      <About />
+      <main>
+        <About />
+      </main>
     </Box>
   )
 }

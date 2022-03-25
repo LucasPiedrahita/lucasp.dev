@@ -71,7 +71,13 @@ function About() {
       <Grid sx={styles.marginBottom}>
         <Navbar />
       </Grid>
-      <Grid container sx={styles.introContainer} direction='column' rowSpacing={{ xs: 1, sm: 2 }}>
+      <Grid
+        component='section'
+        container
+        sx={styles.introContainer}
+        direction='column'
+        rowSpacing={{ xs: 1, sm: 2 }}
+      >
         <Grid item>
           <Typography sx={styles.subtitle}>Hi, my name is</Typography>
           <Typography variant='h1' sx={styles.h1}>
