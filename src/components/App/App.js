@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { About } from '../'
+import { Intro } from '../'
 
 const styles = {
   root: {
@@ -11,7 +11,7 @@ function App() {
   return (
     <Box sx={styles.root}>
       <main>
-        <About />
+        <Intro />
       </main>
     </Box>
   )

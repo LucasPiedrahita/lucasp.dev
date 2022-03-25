@@ -7,7 +7,7 @@ import {
   ListItemText,
   SvgIcon,
 } from '@mui/material'
-import { Navbar } from '../'
+import { Navbar } from '..'
 import { useWindowDimensions } from '../../hooks'
 import { ReactComponent as JavaScriptIcon } from '../../assets/js-square.svg'
 import { ReactComponent as ReactIcon } from '../../assets/react.svg'
@@ -64,7 +64,7 @@ const styles = {
   },
 }
 
-function About() {
+function Intro() {
   const { height } = useWindowDimensions()
   return (
     <Grid container sx={{ minHeight: height }} direction='column' wrap='nowrap'>
@@ -121,4 +121,4 @@ function About() {
   )
 }
 
-export default About
+export default Intro
