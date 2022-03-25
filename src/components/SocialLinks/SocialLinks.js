@@ -53,7 +53,6 @@ SocialLinks.propTypes = {
 }
 function SocialLinks({ horizontal = false }) {
   const styles = horizontal ? horizontalStyles : verticalStyles
-  console.log({ styles })
   return (
     <Box sx={styles.container} component='nav' aria-label='contact information'>
       <List>
