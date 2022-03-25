@@ -6,7 +6,18 @@ import { createTheme, ThemeProvider } from '@mui/material/styles'
 import reportWebVitals from './reportWebVitals'
 import { App } from './components'
 
-const theme = createTheme({})
+const theme = createTheme({
+  overrides: {
+    MuiTypography: {
+      gutterBottom: {
+        mb: {
+          xs: 2,
+          sm: 3,
+        },
+      },
+    },
+  },
+})
 
 ReactDOM.render(
   <React.StrictMode>

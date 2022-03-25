@@ -1,123 +1,78 @@
-import {
-  Grid,
-  Typography,
-  List,
-  ListItem,
-  ListItemIcon,
-  ListItemText,
-  SvgIcon,
-} from '@mui/material'
-import { Navbar } from '../'
-import { useWindowDimensions } from '../../hooks'
-import { ReactComponent as JavaScriptIcon } from '../../assets/js-square.svg'
-import { ReactComponent as ReactIcon } from '../../assets/react.svg'
-import { ReactComponent as HtmlIcon } from '../../assets/html5.svg'
-import { ReactComponent as CssIcon } from '../../assets/css3-alt.svg'
+import { Grid, Typography, Box, useTheme } from '@mui/material'
+import { SectionHeader } from '../'
+import image from '../../assets/lucas-piedrahita-392.jpeg'
 
-const styles = {
-  introContainer: {
-    flexGrow: 1,
+const getStyles = (theme) => ({
+  container: {
+    p: {
+      xs: 2,
+      sm: 3,
+    },
+    maxWidth: 1000,
     m: 'auto',
+  },
+  gridContainer: {
+    '& .MuiTypography-gutterBottom': {
+      ...theme.overrides.MuiTypography.gutterBottom,
+    },
+    '& > div + div': {
+      pt: {
+        xs: 3,
+        sm: 0,
+      },
+      pl: {
+        xs: 0,
+        sm: 3,
+        md: 5,
+      },
+    },
+  },
+  imageContainer: {
     width: 1,
-    px: {
-      xs: 2,
-      sm: 3,
-    },
-    maxWidth: 800,
-    '& svg': {
-      width: {
-        xs: 32,
-        sm: 40,
-      },
-      height: {
-        xs: 32,
-        sm: 40,
-      },
-    },
-    '& li': {
-      py: {
-        sx: 1,
-        sm: 2,
-      },
+    '& img': {
+      width: 1,
+      height: 1,
+      maxWidth: 392,
+      objectFit: 'contain',
     },
   },
-  subtitle: {
-    m: 0,
-    maxWidth: 600,
-    fontSize: {
-      xs: 'h6.fontSize',
-      sm: 'h5.fontSize',
-    },
-  },
-  h1: {
-    my: 3,
-    fontSize: {
-      xs: 'h3.fontSize',
-      sm: 'h1.fontSize',
-    },
-  },
-  marginBottom: {
-    mb: {
-      xs: 2,
-      sm: 3,
-    },
-  },
-}
+})
 
 function About() {
-  const { height } = useWindowDimensions()
+  const theme = useTheme()
+  const styles = getStyles(theme)
   return (
-    <Grid container sx={{ minHeight: height }} direction='column' wrap='nowrap'>
-      <Grid sx={styles.marginBottom}>
-        <Navbar />
-      </Grid>
-      <Grid
-        component='section'
-        container
-        sx={styles.introContainer}
-        direction='column'
-        rowSpacing={{ xs: 1, sm: 2 }}
-      >
-        <Grid item>
-          <Typography sx={styles.subtitle}>Hi, my name is</Typography>
-          <Typography variant='h1' sx={styles.h1}>
-            Lucas Piedrahita.
+    <Box id='About' component='section' sx={styles.container}>
+      <SectionHeader title='About Me' />
+      <Grid container sx={styles.gridContainer}>
+        <Grid item xs={12} sm={7}>
+          <Typography gutterBottom>
+            Fully immersed in the practice of life-long learning, I've developed a deep passion for
+            JavaScript, React and all things web development. The unique combination of creativity,
+            logic, technology and always having something new to learn drives my excitement for the
+            front-end.
           </Typography>
-          <Typography sx={styles.subtitle}>
-            I'm a professional front-end developer who loves to build productivity-enhancing user
-            interfaces with
+          <Typography gutterBottom>
+            My interest in software development stemmed in 2018 from a desire to enhance the
+            productivity of myself and those around me when I created my first application to record
+            field data on a tablet. Sure, that app may have been written in Excel's VBA, but since
+            then I have focused on honing my front-end skills to develop modern, accessible web
+            applications.
+          </Typography>
+          <Typography>
+            I approach complex problems holistically and strive to create simple, maintainable
+            solutions from conception to implementation. I hold myself to a high standard, have a
+            strong attention to detail and lean on partnerships and communication to deliver useful
+            products to meet customer needs.
           </Typography>
         </Grid>
-        <Grid item>
-          <List>
-            <ListItem disableGutters>
-              <ListItemIcon>
-                <SvgIcon component={JavaScriptIcon} viewBox='0 0 448 512' />
-              </ListItemIcon>
-              <ListItemText primary='JavaScript' primaryTypographyProps={{ sx: styles.subtitle }} />
-            </ListItem>
-            <ListItem disableGutters>
-              <ListItemIcon>
-                <SvgIcon component={ReactIcon} viewBox='0 0 512 512' />
-              </ListItemIcon>
-              <ListItemText primary='React' primaryTypographyProps={{ sx: styles.subtitle }} />
-            </ListItem>
-            <ListItem disableGutters>
-              <ListItemIcon>
-                <SvgIcon component={HtmlIcon} viewBox='0 0 384 512' />
-              </ListItemIcon>
-              <ListItemText primary='HTML' primaryTypographyProps={{ sx: styles.subtitle }} />
-            </ListItem>
-            <ListItem disableGutters>
-              <ListItemIcon>
-                <SvgIcon component={CssIcon} viewBox='0 0 384 512' />
-              </ListItemIcon>
-              <ListItemText primary='CSS' primaryTypographyProps={{ sx: styles.subtitle }} />
-            </ListItem>
-          </List>
+        <Grid item xs={12} sm={5}>
+          <Grid container alignItems='center' justifyContent='center' sx={styles.imageContainer}>
+            <img src={image} alt='Headshot of Lucas Piedrahita' />
+          </Grid>
         </Grid>
       </Grid>
-    </Grid>
+    </Box>
   )
 }
 
