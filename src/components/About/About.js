@@ -1,4 +1,5 @@
 import { Grid, Typography, Box, useTheme } from '@mui/material'
+import { SectionHeader } from '../'
 import image from '../../assets/lucas-piedrahita-392.jpeg'
 
 const getStyles = (theme) => ({
@@ -42,11 +43,9 @@ function About() {
   const styles = getStyles(theme)
   return (
     <Box id='About' component='section' sx={styles.container}>
-      <Typography variant='h2' sx={{ pb: 5 }}>
-        About Me
-      </Typography>
+      <SectionHeader title='About Me' />
       <Grid container sx={styles.gridContainer}>
-        <Grid xs={12} sm={7}>
+        <Grid item xs={12} sm={7}>
           <Typography gutterBottom>
             Fully immersed in the practice of life-long learning, I've developed a deep passion for
             JavaScript, React and all things web development. The unique combination of creativity,
@@ -67,7 +66,7 @@ function About() {
             products to meet customer needs.
           </Typography>
         </Grid>
-        <Grid xs={12} sm={5}>
+        <Grid item xs={12} sm={5}>
           <Grid container alignItems='center' justifyContent='center' sx={styles.imageContainer}>
             <img src={image} alt='Headshot of Lucas Piedrahita' />
           </Grid>
