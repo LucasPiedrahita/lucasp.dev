@@ -25,7 +25,7 @@ function Navbar() {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('sm'))
 
   return (
-    <Grid container justifyContent='space-between' alignItems='center' sx={styles.container}>
+    <Grid container justifyContent='space-between' sx={styles.container}>
       <Avatar alt='Lucas Piedrahita' src={avatarImage} sx={styles.avatar} />
       {isLargeScreen && <SocialLinks horizontal={isLargeScreen} />}
       {!isLargeScreen && (

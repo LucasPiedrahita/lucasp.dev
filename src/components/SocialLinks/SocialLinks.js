@@ -11,27 +11,32 @@ import resume from '../../assets/Piedrahita_Lucas_Resume.pdf'
 
 const verticalStyles = {
   container: {
-    width: '100%',
-    bgcolor: 'background.paper',
+    width: 1,
+    '& svg': {
+      width: 32,
+      height: 32,
+    },
   },
-  resumeLink: {},
+  linkText: {
+    fontSize: {
+      xs: 'h6.fontSize',
+      sm: 'body1.fontSize',
+    },
+  },
 }
 
 const horizontalStyles = {
+  ...verticalStyles,
   container: {
     ...verticalStyles.container,
     width: 'auto',
     '& ul': {
       p: 0,
       display: 'flex',
-      gap: 3,
+      gap: 3.5,
     },
     '& .MuiListItemIcon-root': {
       minWidth: 0,
-      '& svg': {
-        width: '1.75rem',
-        height: '1.75rem',
-      },
     },
   },
   resumeLink: {
@@ -48,6 +53,7 @@ SocialLinks.propTypes = {
 }
 function SocialLinks({ horizontal = false }) {
   const styles = horizontal ? horizontalStyles : verticalStyles
+  console.log({ styles })
   return (
     <Box sx={styles.container} component='nav' aria-label='contact information'>
       <List>
@@ -60,7 +66,9 @@ function SocialLinks({ horizontal = false }) {
             <ListItemIcon>
               <LinkedIn />
             </ListItemIcon>
-            {!horizontal && <ListItemText primary='LinkedIn' />}
+            {!horizontal && (
+              <ListItemText primary='LinkedIn' primaryTypographyProps={{ sx: styles.linkText }} />
+            )}
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -72,7 +80,9 @@ function SocialLinks({ horizontal = false }) {
             <ListItemIcon>
               <GitHub />
             </ListItemIcon>
-            {!horizontal && <ListItemText primary='GitHub' />}
+            {!horizontal && (
+              <ListItemText primary='GitHub' primaryTypographyProps={{ sx: styles.linkText }} />
+            )}
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -84,7 +94,9 @@ function SocialLinks({ horizontal = false }) {
             <ListItemIcon>
               <MailOutline />
             </ListItemIcon>
-            {!horizontal && <ListItemText primary='Email' />}
+            {!horizontal && (
+              <ListItemText primary='Email' primaryTypographyProps={{ sx: styles.linkText }} />
+            )}
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -92,7 +104,9 @@ function SocialLinks({ horizontal = false }) {
             <ListItemIcon>
               <PhoneIphone />
             </ListItemIcon>
-            {!horizontal && <ListItemText primary='Call' />}
+            {!horizontal && (
+              <ListItemText primary='Call' primaryTypographyProps={{ sx: styles.linkText }} />
+            )}
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
@@ -108,7 +122,7 @@ function SocialLinks({ horizontal = false }) {
                 <ContactPageOutlined />
               </ListItemIcon>
             )}
-            <ListItemText primary='Resume' />
+            <ListItemText primary='Resume' primaryTypographyProps={{ sx: styles.linkText }} />
           </ListItemButton>
         </ListItem>
       </List>
