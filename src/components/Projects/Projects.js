@@ -16,6 +16,8 @@ const getStyles = (theme) => ({
   },
   gridContainer: {
     display: 'grid',
+    gridRowGap: theme.spacing(5),
+    gridColumnGap: theme.spacing(3),
   },
 })
 
