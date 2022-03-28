@@ -15,9 +15,9 @@ const getStyles = (theme) => ({
   },
   titleContainer: {
     maxWidth: theme.overrides.section.maxWidth,
-    m: 'auto',
-    // TODO: make padding appear right at 900px width
-    pl: { lg: 3 },
+    '@media (min-width: 1000px)': {
+      pl: `calc(((100% - ${theme.overrides.section.maxWidth}px)/2) + ${theme.spacing(3)})`,
+    },
   },
   gridContainer: {
     display: 'grid',
