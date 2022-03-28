@@ -40,6 +40,5 @@ export default function useWindowDimensions() {
       window?.screen?.orientation.removeEventListener('change', handleOrientationChange)
     }
   }, [])
-  console.log({ ...windowDimensions })
   return windowDimensions
 }
