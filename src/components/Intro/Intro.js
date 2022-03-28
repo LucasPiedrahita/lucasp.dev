@@ -19,7 +19,6 @@ const getStyles = (theme) => ({
   introContainer: {
     ...theme.overrides.section,
     pt: 0,
-    maxWidth: 800,
     '& svg': {
       width: {
         xs: 32,

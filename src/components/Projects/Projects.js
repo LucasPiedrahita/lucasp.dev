@@ -6,12 +6,25 @@ import technicalDocumentationImage from '../../assets/technical-documentation-pa
 import personalWebsiteImage from '../../assets/personal-website-392.png'
 
 const getStyles = (theme) => ({
-  container: {
-    ...theme.overrides.section,
+  outerContainer: {
     bgcolor: 'grey.100',
+  },
+  innerContainer: {
+    ...theme.overrides.section,
+    maxWidth: 1200,
+  },
+  titleContainer: {
+    maxWidth: theme.overrides.section.maxWidth,
+    m: 'auto',
+    // TODO: make padding appear right at 900px width
+    pl: { lg: 3 },
   },
   gridContainer: {
     display: 'grid',
+    gridTemplateColumns: {
+      xs: '1fr',
+      md: 'repeat(auto-fit, minmax(350px, 1fr))',
+    },
     gridRowGap: theme.spacing(5),
     gridColumnGap: theme.spacing(3),
   },
@@ -61,20 +74,24 @@ function Projects() {
   const theme = useTheme()
   const styles = getStyles(theme)
   return (
-    <Box id='Projects' component='section' sx={styles.container}>
-      <SectionHeader title='Projects' />
-      <Box sx={styles.gridContainer}>
-        {projects.map((project) => (
-          <Project
-            key={project.id}
-            title={project.title}
-            description={project.description}
-            technology={project.technology}
-            links={project.links}
-            imageSrc={project.imageSrc}
-            imageAlt={project.imageAlt}
-          />
-        ))}
+    <Box id='Projects' component='section' sx={styles.outerContainer}>
+      <Box sx={styles.innerContainer}>
+        <Box sx={styles.titleContainer}>
+          <SectionHeader title='Projects' />
+        </Box>
+        <Box sx={styles.gridContainer}>
+          {projects.map((project) => (
+            <Project
+              key={project.id}
+              title={project.title}
+              description={project.description}
+              technology={project.technology}
+              links={project.links}
+              imageSrc={project.imageSrc}
+              imageAlt={project.imageAlt}
+            />
+          ))}
+        </Box>
       </Box>
     </Box>
   )

@@ -5,38 +5,61 @@ import { GitHub, OpenInNew } from '@mui/icons-material'
 const styles = {
   container: {
     display: 'grid',
-    gridTemplateAreas: `
-    'title links'
-    'image image'
-    'desc desc'
-    'tech tech'`,
-    gridTemplateColumns: '1fr auto',
-    gridTemplateRows: 'auto',
+    gridTemplateAreas: {
+      xs: `'title'
+          'image'
+          'desc'
+          'tech'`,
+      sm: `'image title'
+          'image desc'
+          'image tech'`,
+      md: `'title'
+            'image'
+            'desc'
+            'tech'`,
+    },
+    gridTemplateColumns: {
+      xs: 'auto',
+      sm: '1fr 1fr',
+      md: 'auto',
+    },
+    gridTemplateRows: {
+      xs: 'auto',
+      sm: 'auto 1fr auto',
+      md: 'auto auto 1fr auto',
+    },
     alignItems: 'center',
     gap: 2,
-    p: {
-      xs: 2,
-      sm: 3,
-    },
+    p: 2,
     borderRadius: 1,
   },
   title: {
     gridArea: 'title',
+    alignSelf: 'flex-start',
+  },
+  titleText: {
     fontSize: {
       xs: 'h6.fontSize',
       sm: 'h5.fontSize',
-      md: 'h4.fontSize',
     },
     fontWeight: 'fontWeightBold',
   },
   linksContainer: {
-    gridArea: 'links',
     display: 'flex',
+    alignItems: 'flex-start',
+    '& a': {
+      py: 0,
+      px: 1,
+    },
   },
   imageContainer: {
     gridArea: 'image',
+    alignSelf: 'flex-start',
     width: 1,
     '& img': {
+      border: 1,
+      borderColor: 'divider',
+      borderRadius: 1,
       width: 1,
       height: 1,
       maxWidth: 392,
@@ -45,6 +68,7 @@ const styles = {
   },
   description: {
     gridArea: 'desc',
+    alignSelf: 'flex-start',
   },
   techContainer: {
     gridArea: 'tech',
@@ -74,35 +98,37 @@ Project.propTypes = {
 function Project({ title, description, imageSrc, imageAlt, technology = null, links = null }) {
   return (
     <Paper sx={styles.container} elevation={2}>
-      <Typography variant='h4' component='h3' sx={styles.title}>
-        {title}
-      </Typography>
-      <Box sx={styles.linksContainer}>
-        {links?.github && (
-          <IconButton
-            key='github'
-            component='a'
-            href={links.github}
-            target='_blank'
-            rel='noreferrer'
-            aria-label='open project source code in GitHub'
-          >
-            <GitHub />
-          </IconButton>
-        )}
-        {links?.demo && (
-          <IconButton
-            key='demo'
-            component='a'
-            href={links.demo}
-            target='_blank'
-            rel='noreferrer'
-            aria-label='open the live project'
-          >
-            <OpenInNew />
-          </IconButton>
-        )}
-      </Box>
+      <Grid container justifyContent='space-between' wrap='nowrap' sx={styles.title}>
+        <Typography variant='h4' component='h3' sx={styles.titleText}>
+          {title}
+        </Typography>
+        <Box sx={styles.linksContainer}>
+          {links?.github && (
+            <IconButton
+              key='github'
+              component='a'
+              href={links.github}
+              target='_blank'
+              rel='noreferrer'
+              aria-label='open project source code in GitHub'
+            >
+              <GitHub />
+            </IconButton>
+          )}
+          {links?.demo && (
+            <IconButton
+              key='demo'
+              component='a'
+              href={links.demo}
+              target='_blank'
+              rel='noreferrer'
+              aria-label='open the live project'
+            >
+              <OpenInNew />
+            </IconButton>
+          )}
+        </Box>
+      </Grid>
       <Grid container alignItems='center' justifyContent='center' sx={styles.imageContainer}>
         <a href={links?.demo} target='_blank' rel='noreferrer'>
           <img src={imageSrc} alt={imageAlt} />
