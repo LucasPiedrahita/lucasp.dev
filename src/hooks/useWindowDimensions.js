@@ -8,17 +8,35 @@ function getWindowDimensions() {
   }
 }
 
+function isMobile() {
+  return window.matchMedia('(max-width: 767px)').matches
+}
+
 export default function useWindowDimensions() {
   const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions())
 
   useEffect(() => {
+    // Only resize mobile dimensions if the device orientation changes
     function handleResize() {
+      if (!isMobile()) {
+        setWindowDimensions(getWindowDimensions())
+      }
+    }
+
+    function handleOrientationChange() {
       setWindowDimensions(getWindowDimensions())
     }
 
-    window.addEventListener('resize', handleResize)
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    if (window.screen?.orientation) {
+      window.screen.orientation.addEventListener('change', handleOrientationChange)
+    }
 
+    window.addEventListener('resize', handleResize)
+    return () => {
+      window.removeEventListener('resize', handleResize)
+      window.screen?.orientation.removeEventListener('change', handleOrientationChange)
+    }
+  }, [])
+  console.log({ ...windowDimensions })
   return windowDimensions
 }
