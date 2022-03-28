@@ -6,6 +6,7 @@ import {
   ListItemIcon,
   ListItemText,
   SvgIcon,
+  useTheme,
 } from '@mui/material'
 import { Navbar } from '..'
 import { useWindowDimensions } from '../../hooks'
@@ -14,15 +15,10 @@ import { ReactComponent as ReactIcon } from '../../assets/react.svg'
 import { ReactComponent as HtmlIcon } from '../../assets/html5.svg'
 import { ReactComponent as CssIcon } from '../../assets/css3-alt.svg'
 
-const styles = {
+const getStyles = (theme) => ({
   introContainer: {
-    flexGrow: 1,
-    m: 'auto',
-    width: 1,
-    px: {
-      xs: 2,
-      sm: 3,
-    },
+    ...theme.overrides.section,
+    pt: 0,
     maxWidth: 800,
     '& svg': {
       width: {
@@ -63,10 +59,12 @@ const styles = {
       sm: 3,
     },
   },
-}
+})
 
 function Intro() {
   const { height } = useWindowDimensions()
+  const theme = useTheme()
+  const styles = getStyles(theme)
   return (
     <Grid container sx={{ minHeight: height }} direction='column' wrap='nowrap'>
       <Grid sx={styles.marginBottom}>
