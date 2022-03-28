@@ -16,6 +16,15 @@ const theme = createTheme({
         },
       },
     },
+    section: {
+      px: {
+        xs: 2,
+        sm: 3,
+      },
+      py: 10,
+      maxWidth: 1000,
+      mx: 'auto',
+    },
   },
 })
 

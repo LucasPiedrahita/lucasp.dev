@@ -4,12 +4,7 @@ import image from '../../assets/lucas-piedrahita-392.jpeg'
 
 const getStyles = (theme) => ({
   container: {
-    p: {
-      xs: 2,
-      sm: 3,
-    },
-    maxWidth: 1000,
-    m: 'auto',
+    ...theme.overrides.section,
   },
   gridContainer: {
     '& .MuiTypography-gutterBottom': {
