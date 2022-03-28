@@ -24,17 +24,20 @@ export default function useWindowDimensions() {
     }
 
     function handleOrientationChange() {
-      setWindowDimensions(getWindowDimensions())
+      // flip dimensions because getWindowDimensions() gets the dimensions
+      // of the screen before the event is fired.
+      const { height: width, width: height } = getWindowDimensions()
+      setWindowDimensions({ width, height })
     }
 
-    if (window.screen?.orientation) {
+    if (window?.screen?.orientation) {
       window.screen.orientation.addEventListener('change', handleOrientationChange)
     }
 
     window.addEventListener('resize', handleResize)
     return () => {
       window.removeEventListener('resize', handleResize)
-      window.screen?.orientation.removeEventListener('change', handleOrientationChange)
+      window?.screen?.orientation.removeEventListener('change', handleOrientationChange)
     }
   }, [])
   console.log({ ...windowDimensions })
