@@ -28,7 +28,7 @@ function Footer() {
   return (
     <Box id='Footer' component='footer' sx={styles.outerContainer}>
       <Box sx={styles.innerContainer}>
-        <Box mb={{ xs: 3, md: 0 }}>
+        <Box mb={{ xs: 5, md: 0 }}>
           <SocialLinks horizontal resumeLinkColor='inherit' />
         </Box>
         <Box>
