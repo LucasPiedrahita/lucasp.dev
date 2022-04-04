@@ -11,7 +11,7 @@ const getStyles = (theme) => ({
   },
   innerContainer: {
     ...theme.overrides.section,
-    maxWidth: 1200,
+    maxWidth: theme.overrides.maxWidth.large,
   },
   titleContainer: {
     maxWidth: theme.overrides.section.maxWidth,

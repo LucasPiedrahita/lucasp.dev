@@ -49,7 +49,8 @@ const styles = {
     alignItems: 'flex-start',
     '& a': {
       py: 0,
-      px: 1,
+      pr: 0,
+      pl: 1.5,
     },
   },
   imageContainer: {

@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import { Intro, About, Projects } from '../'
+import { Intro, About, Projects, Footer } from '../'
 
 const styles = {
   root: {
@@ -15,6 +15,7 @@ function App() {
         <About />
         <Projects />
       </main>
+      <Footer />
     </Box>
   )
 }

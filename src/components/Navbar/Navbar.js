@@ -5,8 +5,10 @@ import { Menu } from '@mui/icons-material'
 import avatarImage from '../../assets/lucas-piedrahita-196.jpeg'
 import { SocialLinks } from '../'
 
-const styles = {
+const getStyles = (theme) => ({
   container: {
+    maxWidth: theme.overrides.maxWidth.large,
+    mx: 'auto',
     p: {
       xs: 2,
       sm: 3,
@@ -16,13 +18,14 @@ const styles = {
     width: 52,
     height: 52,
   },
-}
+})
 
 function Navbar() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false)
   const toggleDrawer = useCallback(() => setIsDrawerOpen(!isDrawerOpen), [isDrawerOpen])
   const theme = useTheme()
   const isLargeScreen = useMediaQuery(theme.breakpoints.up('sm'))
+  const styles = getStyles(theme)
 
   return (
     <Grid container justifyContent='space-between' sx={styles.container}>
