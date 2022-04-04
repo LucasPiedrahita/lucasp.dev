@@ -25,34 +25,43 @@ const verticalStyles = {
   },
 }
 
-const horizontalStyles = {
-  ...verticalStyles,
-  container: {
-    ...verticalStyles.container,
-    width: 'auto',
-    '& ul': {
-      p: 0,
-      display: 'flex',
-      gap: 3.5,
+const getHorizontalStyles = (iconColor, resumeLinkColor) => {
+  return {
+    ...verticalStyles,
+    container: {
+      ...verticalStyles.container,
+      width: 'auto',
+      '& ul': {
+        p: 0,
+        display: 'flex',
+        gap: 3.5,
+      },
+      '& .MuiListItemIcon-root': {
+        minWidth: 0,
+        color: iconColor,
+      },
     },
-    '& .MuiListItemIcon-root': {
-      minWidth: 0,
+    resumeLink: {
+      color: resumeLinkColor,
+      border: 2,
+      borderRadius: 2,
+      borderColor: resumeLinkColor,
+      px: 1.5,
+      py: 0.5,
     },
-  },
-  resumeLink: {
-    color: 'primary.main',
-    border: 2,
-    borderRadius: 2,
-    borderColor: 'primary.main',
-    px: 1.5,
-    py: 0.5,
-  },
+  }
 }
 SocialLinks.propTypes = {
   horizontal: PropTypes.bool,
+  iconColor: PropTypes.string,
+  resumeLinkColor: PropTypes.string,
 }
-function SocialLinks({ horizontal = false }) {
-  const styles = horizontal ? horizontalStyles : verticalStyles
+function SocialLinks({
+  horizontal = false,
+  iconColor = 'inherit',
+  resumeLinkColor = 'primary.main',
+}) {
+  const styles = horizontal ? getHorizontalStyles(iconColor, resumeLinkColor) : verticalStyles
   return (
     <Box sx={styles.container} component='nav' aria-label='contact information'>
       <List>
