@@ -25,6 +25,10 @@ const theme = createTheme({
       maxWidth: 1000,
       mx: 'auto',
     },
+    maxWidth: {
+      default: 1000,
+      large: 1200,
+    },
   },
 })
 

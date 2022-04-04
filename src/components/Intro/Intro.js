@@ -52,7 +52,7 @@ const getStyles = (theme) => ({
     },
     fontWeight: 'fontWeightBold',
   },
-  marginBottom: {
+  navbarContainer: {
     mb: {
       xs: 2,
       sm: 3,
@@ -66,7 +66,7 @@ function Intro() {
   const styles = getStyles(theme)
   return (
     <Grid container sx={{ minHeight: height }} direction='column' wrap='nowrap'>
-      <Grid sx={styles.marginBottom}>
+      <Grid sx={styles.navbarContainer}>
         <Navbar />
       </Grid>
       <Grid
