@@ -1,0 +1,8 @@
+export { default as App } from './App/App'
+export { default as Navbar } from './Navbar/Navbar'
+export { default as SocialLinks } from './SocialLinks/SocialLinks'
+export { default as Intro } from './Intro/Intro'
+export { default as About } from './About/About'
+export { default as SectionHeader } from './SectionHeader/SectionHeader'
+export { default as Projects } from './Projects/Projects'
+export { default as Footer } from './Footer/Footer'
