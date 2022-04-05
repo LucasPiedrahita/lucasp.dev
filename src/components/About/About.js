@@ -11,13 +11,13 @@ const getStyles = (theme) => ({
       ...theme.overrides.MuiTypography.gutterBottom,
     },
     '& > div + div': {
-      pt: {
+      pb: {
         xs: 3,
-        sm: 0,
+        sm: 5,
+        md: 0,
       },
       pl: {
         xs: 0,
-        sm: 3,
         md: 5,
       },
     },
@@ -39,8 +39,13 @@ function About() {
   return (
     <Box id='About' component='section' sx={styles.container}>
       <SectionHeader title='About Me' />
-      <Grid container sx={styles.gridContainer}>
-        <Grid item xs={12} sm={7}>
+      <Grid
+        container
+        sx={styles.gridContainer}
+        direction={{ xs: 'column-reverse', md: 'row' }}
+        alignItems={{ xs: 'center', sm: 'flex-start', md: 'center' }}
+      >
+        <Grid item xs={12} md={7}>
           <Typography gutterBottom>
             Fully immersed in the practice of life-long learning, I've developed a deep passion for
             JavaScript, React and all things web development. The unique combination of creativity,
@@ -61,7 +66,7 @@ function About() {
             products to meet customer needs.
           </Typography>
         </Grid>
-        <Grid item xs={12} sm={5}>
+        <Grid item xs={12} md={5}>
           <Grid container alignItems='center' justifyContent='center' sx={styles.imageContainer}>
             <img src={image} alt='Headshot of Lucas Piedrahita' />
           </Grid>
