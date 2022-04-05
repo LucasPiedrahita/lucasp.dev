@@ -47,17 +47,16 @@ function About() {
       >
         <Grid item xs={12} md={7}>
           <Typography gutterBottom>
-            Fully immersed in the practice of life-long learning, I've developed a deep passion for
-            JavaScript, React and all things web development. The unique combination of creativity,
-            logic, technology and always having something new to learn drives my excitement for the
-            front-end.
+            Fully committed to the philosophy of life-long learning, I've developed a deep passion
+            for JavaScript, React and all things web development. The unique combination of
+            creativity, logic, technology and always having something new to learn drives my
+            excitement for the front-end.
           </Typography>
           <Typography gutterBottom>
-            My interest in software development stemmed in 2018 from a desire to enhance the
-            productivity of myself and those around me when I created my first application to record
-            field data on a tablet. Sure, that app may have been written in Excel's VBA, but since
-            then I have focused on honing my front-end skills to develop modern, accessible web
-            applications.
+            My interest in software development stemmed from a desire to enhance the productivity of
+            myself and those around me when I created my first application to record field data on a
+            tablet. Sure, that app may have been written in Excel's VBA, but since then I have
+            focused on honing my front-end skills to develop modern, accessible web applications.
           </Typography>
           <Typography>
             I approach complex problems holistically and strive to create simple, maintainable
