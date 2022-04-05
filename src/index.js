@@ -7,6 +7,12 @@ import reportWebVitals from './reportWebVitals'
 import { App } from './components'
 
 const theme = createTheme({
+  typography: {
+    body1: {
+      fontSize: '1.1rem',
+      lineHeight: 1.7,
+    },
+  },
   overrides: {
     MuiTypography: {
       gutterBottom: {
