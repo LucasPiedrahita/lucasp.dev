@@ -18,6 +18,7 @@ import { ReactComponent as CssIcon } from '../../assets/css3-alt.svg'
 const getStyles = (theme) => ({
   introContainer: {
     ...theme.overrides.section,
+    flexGrow: 1,
     pt: 0,
     '& svg': {
       width: {
@@ -74,6 +75,7 @@ function Intro() {
         container
         sx={styles.introContainer}
         direction='column'
+        justifyContent='center'
         rowSpacing={{ xs: 1, sm: 2 }}
       >
         <Grid item>
