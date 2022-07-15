@@ -12,6 +12,7 @@ import resume from '../../assets/Piedrahita_Lucas_Resume.pdf'
 const verticalStyles = {
   container: {
     width: 1,
+    fontStyle: 'normal',
     '& svg': {
       width: 32,
       height: 32,
@@ -25,7 +26,7 @@ const verticalStyles = {
   },
 }
 
-const getHorizontalStyles = (iconColor, resumeLinkColor) => {
+const getHorizontalStyles = (resumeLinkColor) => {
   return {
     ...verticalStyles,
     container: {
@@ -38,7 +39,10 @@ const getHorizontalStyles = (iconColor, resumeLinkColor) => {
       },
       '& .MuiListItemIcon-root': {
         minWidth: 0,
-        color: iconColor,
+        color: 'inherit',
+      },
+      '& .MuiListItemButton-root': {
+        p: 0,
       },
     },
     resumeLink: {
@@ -46,30 +50,28 @@ const getHorizontalStyles = (iconColor, resumeLinkColor) => {
       border: 2,
       borderRadius: 2,
       borderColor: resumeLinkColor,
-      px: 1.5,
-      py: 0.5,
+      '& > div': {
+        mx: 1.5,
+        my: 1,
+      },
     },
   }
 }
 SocialLinks.propTypes = {
   horizontal: PropTypes.bool,
-  iconColor: PropTypes.string,
   resumeLinkColor: PropTypes.string,
 }
-function SocialLinks({
-  horizontal = false,
-  iconColor = 'inherit',
-  resumeLinkColor = 'primary.main',
-}) {
-  const styles = horizontal ? getHorizontalStyles(iconColor, resumeLinkColor) : verticalStyles
+function SocialLinks({ horizontal = false, resumeLinkColor = 'primary.dark' }) {
+  const styles = horizontal ? getHorizontalStyles(resumeLinkColor) : verticalStyles
   return (
-    <Box sx={styles.container} component='nav' aria-label='contact information'>
+    <Box sx={styles.container} component='address'>
       <List>
         <ListItem disablePadding>
           <ListItemButton
             component='a'
             href='https://www.linkedin.com/in/lucas-piedrahita/'
             disableGutters={horizontal}
+            title='Visit my LinkedIn profile'
           >
             <ListItemIcon>
               <LinkedIn />
@@ -84,6 +86,7 @@ function SocialLinks({
             component='a'
             href='https://github.com/LucasPiedrahita'
             disableGutters={horizontal}
+            title='Visit my GitHub profile'
           >
             <ListItemIcon>
               <GitHub />
@@ -98,6 +101,7 @@ function SocialLinks({
             component='a'
             href='mailto:lpiedrahita96@gmail.com'
             disableGutters={horizontal}
+            title='Email me'
           >
             <ListItemIcon>
               <MailOutline />
@@ -108,7 +112,12 @@ function SocialLinks({
           </ListItemButton>
         </ListItem>
         <ListItem disablePadding>
-          <ListItemButton component='a' href='tel:+19192745369' disableGutters={horizontal}>
+          <ListItemButton
+            component='a'
+            href='tel:+19192745369'
+            disableGutters={horizontal}
+            title='Call me'
+          >
             <ListItemIcon>
               <PhoneIphone />
             </ListItemIcon>
@@ -124,6 +133,7 @@ function SocialLinks({
             target='_blank'
             disableGutters={horizontal}
             sx={styles.resumeLink}
+            title='View my resume'
           >
             {!horizontal && (
               <ListItemIcon>

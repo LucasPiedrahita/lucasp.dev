@@ -14,12 +14,17 @@ import { ReactComponent as JavaScriptIcon } from '../../assets/js-square.svg'
 import { ReactComponent as ReactIcon } from '../../assets/react.svg'
 import { ReactComponent as HtmlIcon } from '../../assets/html5.svg'
 import { ReactComponent as CssIcon } from '../../assets/css3-alt.svg'
+import TransitionSvg from './TransitionSvg'
 
 const getStyles = (theme) => ({
+  outerContainer: {
+    backgroundImage: theme.overrides.background.intro.mainGradient,
+    color: theme.overrides.background.intro.textColor,
+  },
   introContainer: {
     ...theme.overrides.section,
     flexGrow: 1,
-    pt: 0,
+    py: 0,
     '& svg': {
       width: {
         xs: 32,
@@ -59,6 +64,30 @@ const getStyles = (theme) => ({
       sm: 3,
     },
   },
+  transitionContainer: {
+    display: 'flex',
+    mt: -10,
+  },
+  javaScriptItem: {
+    '&:hover svg, &:focus svg': {
+      color: '#ddb700',
+    },
+  },
+  reactItem: {
+    '&:hover svg, &:focus svg': {
+      color: '#06a5d1',
+    },
+  },
+  htmlItem: {
+    '&:hover svg, &:focus svg': {
+      color: '#e34c26',
+    },
+  },
+  cssItem: {
+    '&:hover svg, &:focus svg': {
+      color: '#1873ba',
+    },
+  },
 })
 
 function Intro() {
@@ -66,7 +95,12 @@ function Intro() {
   const theme = useTheme()
   const styles = getStyles(theme)
   return (
-    <Grid container sx={{ minHeight: height }} direction='column' wrap='nowrap'>
+    <Grid
+      container
+      sx={{ ...styles.outerContainer, minHeight: height }}
+      direction='column'
+      wrap='nowrap'
+    >
       <Grid sx={styles.navbarContainer}>
         <Navbar />
       </Grid>
@@ -90,7 +124,7 @@ function Intro() {
         </Grid>
         <Grid item>
           <List>
-            <ListItem disableGutters>
+            <ListItem disableGutters sx={styles.javaScriptItem}>
               <ListItemIcon>
                 <SvgIcon component={JavaScriptIcon} viewBox='0 0 448 512' />
               </ListItemIcon>
@@ -99,19 +133,19 @@ function Intro() {
                 primaryTypographyProps={{ sx: styles.subtitle }}
               />
             </ListItem>
-            <ListItem disableGutters>
+            <ListItem disableGutters sx={styles.reactItem}>
               <ListItemIcon>
                 <SvgIcon component={ReactIcon} viewBox='0 0 512 512' />
               </ListItemIcon>
               <ListItemText primary='React' primaryTypographyProps={{ sx: styles.subtitle }} />
             </ListItem>
-            <ListItem disableGutters>
+            <ListItem disableGutters sx={styles.htmlItem}>
               <ListItemIcon>
                 <SvgIcon component={HtmlIcon} viewBox='0 0 384 512' />
               </ListItemIcon>
               <ListItemText primary='HTML' primaryTypographyProps={{ sx: styles.subtitle }} />
             </ListItem>
-            <ListItem disableGutters>
+            <ListItem disableGutters sx={styles.cssItem}>
               <ListItemIcon>
                 <SvgIcon component={CssIcon} viewBox='0 0 384 512' />
               </ListItemIcon>
@@ -119,6 +153,9 @@ function Intro() {
             </ListItem>
           </List>
         </Grid>
+      </Grid>
+      <Grid sx={styles.transitionContainer}>
+        <TransitionSvg />
       </Grid>
     </Grid>
   )

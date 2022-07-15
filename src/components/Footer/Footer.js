@@ -1,10 +1,10 @@
 import { Typography, Box, useTheme } from '@mui/material'
 import { SocialLinks } from '../'
 
-const getStyles = (theme, bgcolor) => ({
+const getStyles = (theme) => ({
   outerContainer: {
-    bgcolor: bgcolor,
-    color: theme.palette.getContrastText(bgcolor),
+    backgroundImage: theme.overrides.background.footer.mainGradient,
+    color: theme.overrides.background.footer.textColor,
   },
   innerContainer: {
     ...theme.overrides.section,
@@ -22,8 +22,7 @@ const getStyles = (theme, bgcolor) => ({
 
 function Footer() {
   const theme = useTheme()
-  const bgcolor = theme.palette.grey['900']
-  const styles = getStyles(theme, bgcolor)
+  const styles = getStyles(theme)
   const currentYear = new Date().getFullYear()
   return (
     <Box id='Footer' component='footer' sx={styles.outerContainer}>
@@ -32,7 +31,9 @@ function Footer() {
           <SocialLinks horizontal resumeLinkColor='inherit' />
         </Box>
         <Box>
-          <Typography>Designed &#38; built by Lucas Piedrahita &copy; {currentYear}</Typography>
+          <Typography align='center'>
+            Designed &#38; built by Lucas Piedrahita &copy; {currentYear}
+          </Typography>
         </Box>
       </Box>
     </Box>

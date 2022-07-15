@@ -2,7 +2,12 @@ import PropTypes from 'prop-types'
 import { Grid, Typography } from '@mui/material'
 
 const styles = {
-  container: {},
+  container: {
+    textAlign: {
+      xs: 'center',
+      md: 'left',
+    },
+  },
 }
 
 SectionHeader.propTypes = {
