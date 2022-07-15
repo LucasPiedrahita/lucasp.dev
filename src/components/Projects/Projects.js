@@ -1,9 +1,13 @@
 import { Box, useTheme } from '@mui/material'
 import { SectionHeader } from '../'
 import Project from './Project'
-import pollingPlaceImage from '../../assets/polling-place-lookup-480.gif'
-import technicalDocumentationImage from '../../assets/technical-documentation-page-480.gif'
-import personalWebsiteImage from '../../assets/personal-website-392.png'
+import pollingPlaceLookupWebm from '../../assets/polling-place-lookup-392.webm'
+import pollingPlaceLookupMp4 from '../../assets/polling-place-lookup-392.mp4'
+import pollingPlaceLookupWebp from '../../assets/polling-place-lookup-392.webp'
+import technicalDocumentationPageWebm from '../../assets/technical-documentation-page-392.webm'
+import technicalDocumentationPageMp4 from '../../assets/technical-documentation-page-392.mp4'
+import technicalDocumentationPageWebp from '../../assets/technical-documentation-page-392.webp'
+import personalWebsiteWebp from '../../assets/personal-website-640.webp'
 
 const getStyles = (theme) => ({
   outerContainer: {
@@ -37,8 +41,12 @@ const projects = [
     title: 'Polling Place Lookup',
     description:
       'A mobile-first web application residents of Wake County, NC can use to identify their assigned polling place. Input your address and the app zooms the map to show your address and polling place with info including directions to and pictures of your polling place.',
-    imageSrc: pollingPlaceImage,
-    imageAlt: 'Gif of the polling place lookup app being used',
+    videoSources: {
+      webm: pollingPlaceLookupWebm,
+      mp4: pollingPlaceLookupMp4,
+      webp: pollingPlaceLookupWebp,
+    },
+    videoAlt: 'Video of the polling place lookup app being used',
     technology: ['ArcGIS API for JS', 'JS', 'CSS3'],
     links: {
       demo: 'https://lucaspiedrahita.github.io/polling-place-lookup/',
@@ -50,11 +58,16 @@ const projects = [
     title: 'React Docs Clone',
     description:
       "A clone of React's docs built to put my vanilla JavaScript, semantic HTML and CSS3 skills like CSS variables to the test.",
-    imageSrc: technicalDocumentationImage,
-    imageAlt: 'Gif of the technical documentation page with side menu being toggled',
+    videoSources: {
+      webm: technicalDocumentationPageWebm,
+      mp4: technicalDocumentationPageMp4,
+      webp: technicalDocumentationPageWebp,
+    },
+    videoAlt: 'Video of the technical documentation page with side menu being toggled',
     technology: ['JS', 'CSS3', 'HTML5'],
     links: {
       demo: 'https://codepen.io/lucaspiedrahita/full/mdmVMLB',
+      github: null,
     },
   },
   {
@@ -62,10 +75,15 @@ const projects = [
     title: 'My Personal Website',
     description:
       "You're looking at it! The second iteration of my personal website is built with React & Material UI and hosted on Netlify",
-    imageSrc: personalWebsiteImage,
-    imageAlt: 'Image of the website you are on, my personal website',
+    videoSources: {
+      webm: null,
+      mp4: null,
+      webp: personalWebsiteWebp,
+    },
+    videoAlt: 'Image of the website you are on, my personal website',
     technology: ['React', 'Material UI', 'Netlify'],
     links: {
+      demo: null,
       github: 'https://github.com/LucasPiedrahita/lucasp.dev',
     },
   },
@@ -88,8 +106,8 @@ function Projects() {
               description={project.description}
               technology={project.technology}
               links={project.links}
-              imageSrc={project.imageSrc}
-              imageAlt={project.imageAlt}
+              videoSources={project.videoSources}
+              videoAlt={project.videoAlt}
             />
           ))}
         </Box>

@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { Grid, Avatar, IconButton, Drawer, useTheme, useMediaQuery } from '@mui/material'
 import { Menu } from '@mui/icons-material'
 
-import avatarImage from '../../assets/lucas-piedrahita-196.jpeg'
+import avatarImage from '../../assets/lucas-piedrahita-196.webp'
 import { SocialLinks } from '../'
 
 const getStyles = (theme) => ({

@@ -1,6 +1,6 @@
 import { Grid, Typography, Box, useTheme } from '@mui/material'
 import { SectionHeader } from '../'
-import image from '../../assets/lucas-piedrahita-392.jpeg'
+import image from '../../assets/lucas-piedrahita-640.webp'
 
 const getStyles = (theme) => ({
   outerContainer: {

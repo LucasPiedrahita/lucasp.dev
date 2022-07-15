@@ -59,7 +59,7 @@ const getStyles = (theme) => ({
     gridArea: 'image',
     alignSelf: 'flex-start',
     width: 1,
-    '& img': {
+    '& video': {
       border: 1,
       borderColor: 'divider',
       borderRadius: 3,
@@ -91,17 +91,22 @@ const getStyles = (theme) => ({
 Project.propTypes = {
   title: PropTypes.string.isRequired,
   description: PropTypes.string.isRequired,
-  imageSrc: PropTypes.string.isRequired,
-  imageAlt: PropTypes.string.isRequired,
+  videoSources: PropTypes.shape({
+    webp: PropTypes.string.isRequired,
+    webm: PropTypes.string,
+    mp4: PropTypes.string,
+  }).isRequired,
+  videoAlt: PropTypes.string.isRequired,
   technology: PropTypes.arrayOf(PropTypes.string),
   links: PropTypes.shape({
     demo: PropTypes.string,
     github: PropTypes.string,
   }),
 }
-function Project({ title, description, imageSrc, imageAlt, technology = null, links = null }) {
+function Project({ title, description, videoSources, videoAlt, technology = null, links = null }) {
   const theme = useTheme()
   const styles = getStyles(theme)
+  const VideoContainerTag = links.demo ? 'a' : 'div'
   return (
     <Paper sx={styles.container} elevation={2}>
       <Grid container justifyContent='space-between' wrap='nowrap' sx={styles.title}>
@@ -109,7 +114,7 @@ function Project({ title, description, imageSrc, imageAlt, technology = null, li
           {title}
         </Typography>
         <Box sx={styles.linksContainer}>
-          {links?.github && (
+          {links.github && (
             <IconButton
               key='github'
               component='a'
@@ -123,7 +128,7 @@ function Project({ title, description, imageSrc, imageAlt, technology = null, li
               <GitHub />
             </IconButton>
           )}
-          {links?.demo && (
+          {links.demo && (
             <IconButton
               key='demo'
               component='a'
@@ -140,13 +145,17 @@ function Project({ title, description, imageSrc, imageAlt, technology = null, li
         </Box>
       </Grid>
       <Grid container alignItems='center' justifyContent='center' sx={styles.imageContainer}>
-        {!links?.demo ? (
-          <img src={imageSrc} alt={imageAlt} />
-        ) : (
-          <a href={links.demo} target='_blank' rel='noreferrer' title='View live demo'>
-            <img src={imageSrc} alt={imageAlt} />
-          </a>
-        )}
+        <VideoContainerTag
+          {...(links.demo
+            ? { href: links.demo, target: '_blank', rel: 'noreferrer', title: 'View live demo' }
+            : {})}
+        >
+          <video muted autoPlay loop playsInline poster={videoSources.webp}>
+            <source src={videoSources.webm} type='video/webm' />
+            <source src={videoSources.mp4} type='video/mp4' />
+            <img src={videoSources.webp} alt={videoAlt} />
+          </video>
+        </VideoContainerTag>
       </Grid>
       <Typography sx={styles.description}>{description}</Typography>
       <Box sx={styles.techContainer} component='ul'>
