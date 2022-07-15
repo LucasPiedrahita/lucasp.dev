@@ -1,6 +1,6 @@
 {
   "name": "lucasp",
-  "version": "1.0.1-SNAPSHOT",
+  "version": "1.0.1",
   "private": true,
   "dependencies": {
     "@emotion/react": "^11.8.2",
