@@ -7,7 +7,8 @@ import personalWebsiteImage from '../../assets/personal-website-392.png'
 
 const getStyles = (theme) => ({
   outerContainer: {
-    bgcolor: 'grey.100',
+    backgroundImage: theme.overrides.background.projects.mainGradient,
+    color: theme.overrides.background.projects.textColor,
   },
   innerContainer: {
     ...theme.overrides.section,

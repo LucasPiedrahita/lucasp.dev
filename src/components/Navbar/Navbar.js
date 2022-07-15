@@ -18,6 +18,12 @@ const getStyles = (theme) => ({
     width: 52,
     height: 52,
   },
+  drawerPaper: {
+    '&:focus-visible': {
+      outline: '0 !important',
+      backgroundColor: `${theme.palette.background.paper} !important`,
+    },
+  },
 })
 
 function Navbar() {
@@ -36,7 +42,12 @@ function Navbar() {
           <IconButton onClick={toggleDrawer} size='large' aria-label='open navigation menu'>
             <Menu fontSize='inherit' />
           </IconButton>
-          <Drawer anchor='bottom' open={isDrawerOpen} onClose={toggleDrawer}>
+          <Drawer
+            PaperProps={{ sx: styles.drawerPaper }}
+            anchor='bottom'
+            open={isDrawerOpen}
+            onClose={toggleDrawer}
+          >
             <SocialLinks />
           </Drawer>
         </>
