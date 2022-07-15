@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { hydrate, render } from 'react-dom'
 import { CssBaseline, GlobalStyles } from '@mui/material'
 import { createTheme, ThemeProvider } from '@mui/material/styles'
 
@@ -79,16 +79,24 @@ const globalStyles = (
   />
 )
 
-ReactDOM.render(
-  <React.StrictMode>
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      {globalStyles}
-      <App />
-    </ThemeProvider>
-  </React.StrictMode>,
-  document.getElementById('root')
-)
+function WrappedApp() {
+  return (
+    <React.StrictMode>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        {globalStyles}
+        <App />
+      </ThemeProvider>
+    </React.StrictMode>
+  )
+}
+
+const rootElement = document.getElementById('root')
+if (rootElement.hasChildNodes()) {
+  hydrate(<WrappedApp />, rootElement)
+} else {
+  render(<WrappedApp />, rootElement)
+}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
