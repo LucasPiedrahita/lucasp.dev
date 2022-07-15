@@ -76,8 +76,8 @@ const projects = [
     description:
       "You're looking at it! The second iteration of my personal website is built with React & Material UI and hosted on Netlify",
     videoSources: {
-      webm: 'null.webm',
-      mp4: 'null.mp4',
+      webm: null,
+      mp4: null,
       webp: personalWebsiteWebp,
     },
     videoAlt: 'Image of the website you are on, my personal website',
