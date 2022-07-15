@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react'
 import { Grid, Avatar, IconButton, Drawer, useTheme, useMediaQuery } from '@mui/material'
 import { Menu } from '@mui/icons-material'
 
-import avatarImage from '../../assets/lucas-piedrahita-196.jpeg'
+import avatarImage from '../../assets/lucas-piedrahita-196.webp'
 import { SocialLinks } from '../'
 
 const getStyles = (theme) => ({
@@ -17,6 +17,12 @@ const getStyles = (theme) => ({
   avatar: {
     width: 52,
     height: 52,
+  },
+  drawerPaper: {
+    '&:focus-visible': {
+      outline: '0 !important',
+      backgroundColor: `${theme.palette.background.paper} !important`,
+    },
   },
 })
 
@@ -36,7 +42,12 @@ function Navbar() {
           <IconButton onClick={toggleDrawer} size='large' aria-label='open navigation menu'>
             <Menu fontSize='inherit' />
           </IconButton>
-          <Drawer anchor='bottom' open={isDrawerOpen} onClose={toggleDrawer}>
+          <Drawer
+            PaperProps={{ sx: styles.drawerPaper }}
+            anchor='bottom'
+            open={isDrawerOpen}
+            onClose={toggleDrawer}
+          >
             <SocialLinks />
           </Drawer>
         </>
